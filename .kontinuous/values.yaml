@@ -5,9 +5,9 @@ app:
   imagePackage: app
   envFrom:
   - secretRef:
-      name: socialgouv-app
+      name: app
   - configMapRef:
-      name: socialgouv-app
+      name: app
 
 jobs:
   ~chart: jobs

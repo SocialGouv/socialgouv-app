@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: socialgouv-app
+  name: app
 data:
   REPOSITORY_FOLDER: "./tmp"
   BOT_NAME: "socialgouv[bot]"
