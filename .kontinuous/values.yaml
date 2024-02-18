@@ -3,6 +3,12 @@ app:
   ~needs: [build-app]
   probesPath: /healthz
   imagePackage: app
+  volumes:
+    - name: repos
+      emptyDir: {}
+  volumeMounts:
+    - mountPath: /app/repos
+      name: repos
   envFrom:
   - secretRef:
       name: app
