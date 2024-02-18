@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: socialgouv-app
+data:
+  REPOSITORY_FOLDER: "./tmp"
+  BOT_NAME: "socialgouv[bot]"
+  ISSUE_TITLE: "SRE Maintenance Issue"

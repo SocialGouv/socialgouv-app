@@ -8,3 +8,5 @@ Dockerfile
 docker-compose.yml
 .prettierrc
 .eslintrc.json
+.github
+.kontinuous

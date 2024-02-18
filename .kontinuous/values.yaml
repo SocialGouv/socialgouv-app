@@ -1,0 +1,19 @@
+app:
+  ~chart: app
+  ~needs: [build-app]
+  probesPath: /healthz
+  imagePackage: app
+  envFrom:
+  - secretRef:
+      name: socialgouv-app
+  - configMapRef:
+      name: socialgouv-app
+
+jobs:
+  ~chart: jobs
+  runs:
+    build-app:
+      use: build
+      memoryLimit: 8Gi
+      with:
+        imagePackage: app
