@@ -18,4 +18,6 @@ FROM base AS runner
 COPY --from=builder /app/build /app
 COPY --from=builder /app/node_modules /app/node_modules
 
+USER 1000
+
 CMD ["node", "index.js"]
