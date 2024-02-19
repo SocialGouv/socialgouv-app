@@ -35,7 +35,12 @@ jobs:
           !.yarn/sdks
           !.yarn/versions
           " >> .gitignore
-        
+
+      - name: update yarn
+        run: |
+          yarn
+
       - name: test
         run: |
           git status
+          git diff
