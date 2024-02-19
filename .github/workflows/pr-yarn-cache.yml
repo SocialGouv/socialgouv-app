@@ -18,11 +18,20 @@ jobs:
         with:
           repository: "SocialGouv/${{github.event.client_payload.repository}}"
 
+      - name: yarn version
+        run: |
+          node --version
+          yarn --version
+
       - name: install yarn berry
         run: |
           yarn set version berry
           yarn plugin import https://codeberg.org/devthefuture/yarn-plugin-fetch/raw/branch/master/bundles/@yarnpkg/plugin-fetch.js
-      
+
+      - name: update yarn
+        run: |
+          yarn
+
       - name: update .gitignore
         run: |
           echo "
@@ -35,10 +44,6 @@ jobs:
           !.yarn/sdks
           !.yarn/versions
           " >> .gitignore
-
-      - name: update yarn
-        run: |
-          yarn
 
       - name: test
         run: |
