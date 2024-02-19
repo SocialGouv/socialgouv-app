@@ -8,7 +8,34 @@ jobs:
   yarn-cache:
     runs-on: ubuntu-latest
     steps:
+
       - name: test
         env:
           REPO: ${{ github.event.client_payload.repository }}
         run: echo $REPO
+
+      - uses: actions/checkout@v4
+        with:
+          repository: "SocialGouv/${{github.event.client_payload.repository}}"
+
+      - name: install yarn berry
+        run: |
+          yarn set version berry
+          yarn plugin import https://codeberg.org/devthefuture/yarn-plugin-fetch/raw/branch/master/bundles/@yarnpkg/plugin-fetch.js
+      
+      - name: update .gitignore
+        run: |
+          echo "
+          # yarn berry
+          .pnp.*
+          .yarn/*
+          !.yarn/patches
+          !.yarn/plugins
+          !.yarn/releases
+          !.yarn/sdks
+          !.yarn/versions
+          " >> .gitignore
+        
+      - name: test
+        run: |
+          git status
