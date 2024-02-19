@@ -16,7 +16,7 @@ import addIssueToProject from "./utils/add-issue-to-project"
 
 function getIssueBody(results: Rule[]) {
   return `### Liste des éléments à mettre à jour:
-${results.map((result) => result.message).join("\n")}
+${results.map((result) => result.message).join("\n---\n")}
 `
 }
 
