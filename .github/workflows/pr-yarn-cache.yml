@@ -30,7 +30,7 @@ jobs:
 
       - name: update yarn
         run: |
-          yarn
+          yarn install
 
       - name: update .gitignore
         run: |
