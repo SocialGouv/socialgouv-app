@@ -24,9 +24,6 @@ Documentation: https://github.com/devthefuture-org/yarn-plugin-fetch
 `,
   },
   {
-    file: "toto.txt", // for testing purposes
-  },
-  {
     file: ".eslintrc.json",
     message: `- [ ] Installer le packge \`EsLint\`
 Installation:
@@ -38,15 +35,27 @@ Installation:
   },
   {
     file: ".dockerignore",
+    message: `- [ ] Ajouter un fichier \`.dockerignore\`
+Lister l'ensemble des fichiers à exclure du build Docker de l'application.
+`,
   },
   {
     file: ".gitignore",
+    message: `- [ ] Ajouter un fichier \`.gitignore\`
+Lister l'ensemble des fichiers à exclure du dêpot de fichiers Git.
+`,
   },
   {
     file: "docker-compose.yml",
+    message: `- [ ] Ajouter un fichier \`docker-compose.yml\`
+Mettre en place un environnement de développement local à l'aide de Docker Compose.
+`,
   },
   {
     file: "sonar-project.properties",
+    message: `- [ ] Ajouter un fichier \`sonar-project.properties\`
+Mettre en place les scans SonarCloud et ajouter le fichier \`sonar-project.properties\` au dêpot.
+`,
   },
 ] as Rule[]
 
