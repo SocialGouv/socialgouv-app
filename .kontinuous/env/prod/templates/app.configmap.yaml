@@ -8,3 +8,4 @@ data:
   BOT_NAME: "socialgouv[bot]"
   REPOSITORY_FOLDER: "/app/repos"
   ISSUE_TITLE: "SRE Maintenance Issue"
+  WORKFLOWS_REPOSITORY: "socialgouv-app"

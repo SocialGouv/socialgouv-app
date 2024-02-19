@@ -1,0 +1,14 @@
+name: Yarn Cache
+
+on:
+  repository_dispatch:
+    types: [pr-yarn-cache]
+
+jobs:
+  yarn-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        env:
+          REPO: ${{ github.event.client_payload.repository }}
+        run: echo $REPO
