@@ -15,16 +15,7 @@ import getProjectId from "./utils/get-project-id"
 import addIssueToProject from "./utils/add-issue-to-project"
 
 function getIssueBody(results: Rule[]) {
-  // ${results
-  //   .reduce((chunks, result) => {
-  //     if (!result.success) {
-  //       chunks.push(result.message)
-  //     }
-  //     return chunks
-  //   }, [] as string[])
-  //   .join("\n---\n")}
   const errors = results.filter((result) => !result.success)
-  console.log("ERRORS", errors, errors.length)
 
   return `### Liste des éléments à mettre à jour:
 ${errors.map((error) => error.message).join("\n---\n")}
