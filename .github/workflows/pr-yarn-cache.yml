@@ -22,7 +22,6 @@ jobs:
         run: |
           node --version
           yarn --version
-          yarn install
 
       - name: install yarn berry
         run: |
@@ -31,6 +30,7 @@ jobs:
 
       - name: update yarn
         run: |
+          export YARN_ENABLE_IMMUTABLE_INSTALLS=false
           yarn install
 
       - name: update .gitignore
