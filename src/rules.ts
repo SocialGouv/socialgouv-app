@@ -18,8 +18,9 @@ Ce fichier doit comporter les éléments suivants:
   {
     file: ".yarnrc.yml",
     workflow: "pr-yarn-berry",
-    message: `- [ ] Ajouter le cache yarn
-Suivre les instructions d'installation présentes sur la page du plugin:
+    message: `- [ ] Installer Yarn Berry
+Utiliser la pull request \`[SRE] Yarn Berry\` ajoutée à votre repository.
+Pour plus de détails, suivre les instructions d'installation présentes sur la page du plugin:
 Documentation: https://github.com/devthefuture-org/yarn-plugin-fetch
 `,
   },
