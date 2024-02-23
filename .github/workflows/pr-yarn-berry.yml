@@ -2,7 +2,7 @@ name: Yarn Cache
 
 on:
   repository_dispatch:
-    types: [pr-yarn-cache]
+    types: [pr-yarn-berry]
 
 jobs:
   yarn-cache:

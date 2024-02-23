@@ -17,7 +17,7 @@ Ce fichier doit comporter les éléments suivants:
   },
   {
     file: ".yarnrc.yml",
-    workflow: "pr-yarn-cache",
+    workflow: "pr-yarn-berry",
     message: `- [ ] Ajouter le cache yarn
 Suivre les instructions d'installation présentes sur la page du plugin:
 Documentation: https://github.com/devthefuture-org/yarn-plugin-fetch
