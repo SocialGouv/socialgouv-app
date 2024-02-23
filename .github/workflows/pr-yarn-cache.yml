@@ -9,26 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: test
-        env:
-          REPO: ${{ github.event.client_payload.repository }}
-        run: echo $REPO
-
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           repository: "SocialGouv/${{github.event.client_payload.repository}}"
 
-      - name: yarn install
-        run: |
-          node --version
-          yarn --version
-
-      - name: install yarn berry
+      - name: Install yarn berry
         run: |
           yarn set version berry
           yarn plugin import https://codeberg.org/devthefuture/yarn-plugin-fetch/raw/branch/master/bundles/@yarnpkg/plugin-fetch.js
 
-      - name: update yarn
+      - name: Update yarn
         run: |
           export YARN_ENABLE_IMMUTABLE_INSTALLS=false
           yarn install
@@ -46,10 +37,14 @@ jobs:
           !.yarn/versions
           " >> .gitignore
 
-      - name: test
-        run: |
-          git status
-          git diff
+      - name: Generate Github App token
+        uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
-      - name: Create Pull Request
+      - name: Create pull request
         uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
