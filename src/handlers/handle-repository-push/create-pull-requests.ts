@@ -20,7 +20,7 @@ async function createPullRequest({
     event_type,
     owner: __ORGANIZATION__,
     repo: __WORKFLOWS_REPOSITORY__,
-    client_payload: { ...rest },
+    client_payload: { repository, ...rest },
   })
 }
 
@@ -34,7 +34,7 @@ export default async function createPullRequests({
   repository: string
 }) {
   const promises = results.reduce((promises, result) => {
-    if (result.pullRequest.workflow) {
+    if (result.pullRequest?.workflow) {
       promises.push(
         createPullRequest({
           octokit,

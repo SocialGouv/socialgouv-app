@@ -8,7 +8,7 @@ export interface PullRequest {
 export interface Rule {
   file: string
   success?: boolean
-  pullRequest: PullRequest
+  pullRequest?: PullRequest
   issue: {
     message: string
   }
