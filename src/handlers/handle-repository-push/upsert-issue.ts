@@ -5,20 +5,20 @@ import {
   __ISSUE_TITLE__,
   __ORGANIZATION__,
   __PROJECT_NUMBER__,
-} from "./env"
-import type { Rule } from "./rules"
-import getIssue from "./utils/get-issue"
-import pinIssue from "./utils/pin-issue"
-import updateIssue from "./utils/update-issue"
-import createIssue from "./utils/create-issue"
-import getProjectId from "./utils/get-project-id"
-import addIssueToProject from "./utils/add-issue-to-project"
+} from "../../env"
+import type { Rule } from "../../rules"
+import getIssue from "../../utils/get-issue"
+import pinIssue from "../../utils/pin-issue"
+import updateIssue from "../../utils/update-issue"
+import createIssue from "../../utils/create-issue"
+import getProjectId from "../../utils/get-project-id"
+import addIssueToProject from "../../utils/add-issue-to-project"
 
 function getIssueBody(results: Rule[]) {
   const errors = results.filter((result) => !result.success)
 
   return `### Liste des éléments à mettre à jour:
-${errors.map((error) => error.message).join("\n---\n")}
+${errors.map((error) => error.issue.message).join("\n---\n")}
 `
 }
 

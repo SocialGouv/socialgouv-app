@@ -4,7 +4,7 @@ import type { PushEvent } from "@octokit/webhooks-types"
 import checkRules from "./check-rules"
 import upsertIssue from "./upsert-issue"
 import createPullRequests from "./create-pull-requests"
-import { __WORKFLOWS_REPOSITORY__ } from "./env"
+import { __WORKFLOWS_REPOSITORY__ } from "../../env"
 
 export default async function handleRepositoryPush({
   octokit,

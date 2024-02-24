@@ -1,8 +1,8 @@
 import degit from "degit"
 import * as fs from "node:fs/promises"
 
-import Rules, { type Rule } from "./rules"
-import { __REPOSITORY_FOLDER__ } from "./env"
+import Rules, { type Rule } from "../../rules"
+import { __REPOSITORY_FOLDER__ } from "../../env"
 
 async function deleteRepository(repository: string) {
   try {
