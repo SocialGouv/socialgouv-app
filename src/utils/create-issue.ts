@@ -12,11 +12,13 @@ export default async function createIssue({
   body,
   title,
   octokit,
+  labelIds,
   repositoryId,
 }: {
   body: string
   title: string
   octokit: Octokit
+  labelIds: string[]
   repositoryId: string
 }) {
   console.log("Issue:create ==>", { repositoryId, title, body })
@@ -28,13 +30,15 @@ export default async function createIssue({
       mutation createIssue(
         $body: String!,
         $title: String!,
+        $labelIds: [ID!],
         $repositoryId: ID!,
       ) {
         createIssue(
           input: {
             body: $body,
             title: $title,
-            repositoryId: $repositoryId
+            labelIds: $labelIds,
+            repositoryId: $repositoryId,
           }
         ) {
           issue {
@@ -46,7 +50,7 @@ export default async function createIssue({
         }
       }
     `,
-    { body, title, repositoryId },
+    { body, title, repositoryId, labelIds },
   )) as CreateIssueData
 
   return issue

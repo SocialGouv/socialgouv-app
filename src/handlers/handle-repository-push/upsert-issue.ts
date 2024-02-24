@@ -2,6 +2,7 @@ import { Octokit } from "octokit"
 
 import {
   __BOT_NAME__,
+  __ISSUES_LABEL__,
   __ISSUE_TITLE__,
   __ORGANIZATION__,
   __PROJECT_NUMBER__,
@@ -9,14 +10,13 @@ import {
 import type { Rule } from "../../rules"
 import getIssue from "../../utils/get-issue"
 import pinIssue from "../../utils/pin-issue"
+import getLabelId from "../../utils/get-label-id"
 import updateIssue from "../../utils/update-issue"
 import createIssue from "../../utils/create-issue"
 import getProjectId from "../../utils/get-project-id"
 import addIssueToProject from "../../utils/add-issue-to-project"
 
 function getIssueBody(results: Rule[]) {
-  // console.log("getIssueBody", results)
-
   const errors = results.filter((result) => !result.success)
 
   return `### Liste des éléments à mettre à jour:
@@ -44,19 +44,21 @@ export default async function upsertIssue({
     organization: __ORGANIZATION__,
   })
 
-  const projectId = await getProjectId({
-    octokit,
-    organization: __ORGANIZATION__,
-    number: Number(__PROJECT_NUMBER__),
-  })
-
   if (issue) {
     await updateIssue({ octokit, id: issue.id, body })
   } else {
+    const labelId = await getLabelId({
+      octokit,
+      repository,
+      name: __ISSUES_LABEL__,
+      organization: __ORGANIZATION__,
+    })
+
     issue = await createIssue({
       body,
       octokit,
       repositoryId,
+      labelIds: [labelId],
       title: __ISSUE_TITLE__,
     })
   }
@@ -64,6 +66,12 @@ export default async function upsertIssue({
   if (!issue.isPinned) {
     await pinIssue({ octokit, issueId: issue.id })
   }
+
+  const projectId = await getProjectId({
+    octokit,
+    organization: __ORGANIZATION__,
+    number: Number(__PROJECT_NUMBER__),
+  })
 
   await addIssueToProject({ octokit, projectId, contentId: issue.id })
 

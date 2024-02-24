@@ -9,19 +9,10 @@ import { __BOT_NAME__, __WORKFLOWS_REPOSITORY__ } from "../../env"
 export default async function handleRepositoryPush({
   octokit,
   payload,
-  // payload: {
-  //   repository: {
-  //     name: repository,
-  //     node_id: repositoryId,
-  //     owner: { name: owner },
-  //   },
-  // },
 }: {
   octokit: Octokit
   payload: PushEvent
 }) {
-  // console.log("Event:push ==>", { payload })
-  // console.log("Event:push ==>", { owner, repository, repositoryId })
   const {
     repository: {
       name: repository,
@@ -43,11 +34,6 @@ export default async function handleRepositoryPush({
         repository,
         branch,
       })
-      // } else if (!payload.deleted) {
-      //   console.error("Event:push ==> Skipping branch deletion", {
-      //     repository,
-      //     branch,
-      //   })
     } else if (!["main", "master"].includes(branch)) {
       console.log("Event:push ==> Skipping non master/main branches", {
         repository,

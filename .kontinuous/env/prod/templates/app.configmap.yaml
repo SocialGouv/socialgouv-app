@@ -4,6 +4,7 @@ metadata:
   name: app
 data:
   PROJECT_NUMBER: "109"
+  ISSUES_LABEL: "socialgouv" 
   ORGANIZATION: "SocialGouv"
   BOT_NAME: "socialgouv[bot]"
   REPOSITORY_FOLDER: "/app/repos"

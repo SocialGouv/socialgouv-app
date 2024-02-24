@@ -3,10 +3,6 @@ import { Octokit } from "octokit"
 import type { PullRequest } from "../rules"
 import { __ORGANIZATION__, __WORKFLOWS_REPOSITORY__ } from "../env"
 
-// interface Options extends PullRequest {
-//   issueNumber: number
-// }
-
 export default async function createPullRequest({
   octokit,
   options,
