@@ -1,10 +1,12 @@
 export interface PullRequest {
-  body: string
+  body?: string
   title: string
   branch: string
   workflow: string
   commitMessage: string
+  bodyTpl: (data: Record<string, unknown>) => string
 }
+
 export interface Rule {
   file: string
   success?: boolean
@@ -33,9 +35,12 @@ Ce fichier doit comporter les éléments suivants:
       branch: "chore/yarn-berry",
       commitMessage: "add yarn berry",
       title: "[SRE] Yarn Berry",
-      body: `This pull request has been geenrated automaticaly.
-The aim of this pull request his to add \`Yarn Berry\` to this project.
+      bodyTpl: ({
+        issueNumber,
+      }) => `This pull request has been geenrated automaticaly.
+The aim of this pull request is to add \`Yarn Berry\` to this project.
 Installation of \`Yarn Berry\` is a technical recommandation of **La Fabrique Numérique** des ministères sociaux.
+This pull request resolves #${issueNumber}
 `,
     },
     issue: {

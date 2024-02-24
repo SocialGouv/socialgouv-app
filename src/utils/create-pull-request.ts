@@ -3,9 +3,9 @@ import { Octokit } from "octokit"
 import type { PullRequest } from "../rules"
 import { __ORGANIZATION__, __WORKFLOWS_REPOSITORY__ } from "../env"
 
-interface Options extends PullRequest {
-  issueNumber: number
-}
+// interface Options extends PullRequest {
+//   issueNumber: number
+// }
 
 export default async function createPullRequest({
   octokit,
@@ -13,7 +13,7 @@ export default async function createPullRequest({
   repository,
 }: {
   octokit: Octokit
-  options: Options
+  options: PullRequest
   repository: string
 }) {
   console.log("PullRequest:create ==>", { repository, options })

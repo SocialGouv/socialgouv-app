@@ -16,11 +16,12 @@ export default async function createPullRequests({
 }) {
   const promises = results.reduce((promises, { pullRequest }) => {
     if (pullRequest?.workflow) {
+      pullRequest.body = pullRequest.bodyTpl({ issueNumber })
       promises.push(
         createPullRequest({
           octokit,
           repository,
-          options: { ...pullRequest, issueNumber },
+          options: pullRequest,
         }),
       )
     }
