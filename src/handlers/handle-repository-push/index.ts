@@ -50,9 +50,20 @@ export default async function handleRepositoryPush({
       })
     } else {
       const results = await checkRules({ owner, repository })
-      await upsertIssue({ octokit, results, repository, repositoryId })
+      const issue = await upsertIssue({
+        octokit,
+        results,
+        repository,
+        repositoryId,
+      })
+      issue.number
       if (process.env.NODE_ENV !== "production") {
-        await createPullRequests({ octokit, results, repository })
+        await createPullRequests({
+          octokit,
+          results,
+          repository,
+          issueNumber: issue.number,
+        })
       }
     }
   } else {

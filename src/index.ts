@@ -4,7 +4,7 @@ import { createNodeMiddleware } from "@octokit/webhooks"
 
 import handleRepositoryPush from "./handlers/handle-repository-push"
 import { __APP_ID__, __PRIVATE_KEY__, __WEBHOOK_SECRET__ } from "./env"
-import handleRepositoryPullRequest from "./handlers/handle-repository-pull-request"
+// import handleRepositoryPullRequest from "./handlers/handle-repository-pull-request"
 
 const app = new App({
   appId: __APP_ID__,
@@ -15,7 +15,7 @@ const app = new App({
 })
 
 app.webhooks.on("push", handleRepositoryPush)
-app.webhooks.on("pull_request", handleRepositoryPullRequest)
+// app.webhooks.on("pull_request", handleRepositoryPullRequest)
 
 const middleware = createNodeMiddleware(app.webhooks, { path: "/" })
 
@@ -29,5 +29,5 @@ const server = http.createServer((req, res) => {
 })
 
 server.listen(3000, () => {
-  console.log("Server listening at: http://localhost:3000/")
+  console.log("Server listening at http://localhost:3000/")
 })

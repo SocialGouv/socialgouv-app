@@ -64,4 +64,6 @@ export default async function upsertIssue({
   }
 
   await addIssueToProject({ octokit, projectId, contentId: issue.id })
+
+  return issue
 }

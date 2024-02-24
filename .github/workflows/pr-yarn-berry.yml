@@ -51,4 +51,6 @@ jobs:
           title: ${{github.event.client_payload.title}}
           branch: ${{github.event.client_payload.branch}}
           token: ${{ steps.generate-token.outputs.token }}
-          commit-message: ${{github.event.client_payload.commitMessage}}
+          commit-message: |
+            ${{github.event.client_payload.commitMessage}}
+            This pull request resolves #${{github.event.client_payload.issueNumber}}

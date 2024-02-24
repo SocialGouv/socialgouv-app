@@ -1,45 +1,26 @@
 import { Octokit } from "octokit"
 
-import type { Rule, PullRequest } from "../../rules"
-import { __ORGANIZATION__, __WORKFLOWS_REPOSITORY__ } from "../../env"
-
-async function createPullRequest({
-  octokit,
-  options,
-  repository,
-}: {
-  octokit: Octokit
-  repository: string
-  options: PullRequest
-}) {
-  console.log("PullRequest:create ==>", { repository, options })
-
-  const { workflow: event_type, ...rest } = options
-
-  await octokit.rest.repos.createDispatchEvent({
-    event_type,
-    owner: __ORGANIZATION__,
-    repo: __WORKFLOWS_REPOSITORY__,
-    client_payload: { repository, ...rest },
-  })
-}
+import type { Rule } from "../../rules"
+import createPullRequest from "../../utils/create-pull-request"
 
 export default async function createPullRequests({
   results,
   octokit,
   repository,
+  issueNumber,
 }: {
   results: Rule[]
   octokit: Octokit
   repository: string
+  issueNumber: number
 }) {
-  const promises = results.reduce((promises, result) => {
-    if (result.pullRequest?.workflow) {
+  const promises = results.reduce((promises, { pullRequest }) => {
+    if (pullRequest?.workflow) {
       promises.push(
         createPullRequest({
           octokit,
           repository,
-          options: result.pullRequest,
+          options: { ...pullRequest, issueNumber },
         }),
       )
     }
