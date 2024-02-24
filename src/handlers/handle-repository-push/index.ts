@@ -20,7 +20,7 @@ export default async function handleRepositoryPush({
   octokit: Octokit
   payload: PushEvent
 }) {
-  console.log("Event:push ==>", { payload })
+  // console.log("Event:push ==>", { payload })
   // console.log("Event:push ==>", { owner, repository, repositoryId })
   const {
     repository: {

@@ -49,6 +49,7 @@ jobs:
         with:
           body: ${{github.event.client_payload.body}}
           title: ${{github.event.client_payload.title}}
+          labels: ${{github.event.client_payload.labels}}
           branch: ${{github.event.client_payload.branch}}
           token: ${{ steps.generate-token.outputs.token }}
           commit-message: ${{github.event.client_payload.commitMessage}}

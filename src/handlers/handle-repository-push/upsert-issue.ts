@@ -15,6 +15,8 @@ import getProjectId from "../../utils/get-project-id"
 import addIssueToProject from "../../utils/add-issue-to-project"
 
 function getIssueBody(results: Rule[]) {
+  // console.log("getIssueBody", results)
+
   const errors = results.filter((result) => !result.success)
 
   return `### Liste des éléments à mettre à jour:

@@ -2,6 +2,7 @@ export interface PullRequest {
   body?: string
   title: string
   branch: string
+  labels: string
   workflow: string
   commitMessage: string
   bodyTpl: (data: Record<string, unknown>) => string
@@ -35,6 +36,7 @@ Ce fichier doit comporter les éléments suivants:
       branch: "chore/yarn-berry",
       commitMessage: "add yarn berry",
       title: "[SRE] Yarn Berry",
+      labels: "socialgouv",
       bodyTpl: ({
         issueNumber,
       }) => `This pull request has been geenrated automaticaly.
@@ -44,7 +46,7 @@ This pull request resolves #${issueNumber}
 `,
     },
     issue: {
-      message: `- [ ] Installer Yarn Berry
+      message: `- [ ] Installer \`Yarn Berry\`
 Utiliser la pull request \`[SRE] Yarn Berry\` ajoutée à votre repository.
 Pour plus de détails, suivre les instructions d'installation présentes sur la page du plugin:
 Documentation: https://github.com/devthefuture-org/yarn-plugin-fetch
