@@ -19,7 +19,14 @@ import addIssueToProject from "../../utils/add-issue-to-project"
 function getIssueBody(results: Rule[]) {
   const errors = results.filter((result) => !result.success)
 
-  return `### Liste des éléments à mettre à jour:
+  return `## Prérequis techniques des produits de la Fabrique Numérique
+Cette *issue* liste les prérequis techniques à mettre en place sur tous les produits de la Fabrique.
+Ces prérequis techniques tendent à améliorer la sécurité, la maintenabilité et la compatibilité des applications.
+
+Des *pull requests* sont disponibles pour faciliter l'intégration de certains éléments de cette liste au dépôt de code.
+> [!IMPORTANT]
+> Il est préférable de *merge* les *pull requests* en respectant l'odre établit dans cette liste.
+---
 ${errors.map((error) => error.issue.message).join("\n---\n")}
 `
 }

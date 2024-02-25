@@ -1,4 +1,4 @@
-name: Yarn Cache
+name: Yarn Berry
 
 on:
   repository_dispatch:
