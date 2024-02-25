@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: app
+data:
+  MY_VARIABLE_1: <YOUR_ENVIRONMENT_VARIABLE_HERE>
+  MY_VARIABLE_2: <YOUR_ENVIRONMENT_VARIABLE_HERE>

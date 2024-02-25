@@ -54,6 +54,30 @@ Documentation: https://github.com/devthefuture-org/yarn-plugin-fetch
     },
   },
   {
+    file: ".kontinuous/values.yaml",
+    pullRequest: {
+      workflow: "pr-kontinuous",
+      branch: "chore/kontinuous",
+      commitMessage: "add kontinuous config",
+      title: "[SRE] Kontinuous",
+      labels: "socialgouv",
+      bodyTpl: ({
+        issueNumber,
+      }) => `This pull request has been geenrated automaticaly.
+The aim of this pull request is to add \`Kontinuous\` to this project.
+Installation of \`Kontinuous\` is a requirement to deploy your product at **La Fabrique Numérique** des ministères sociaux.
+This pull request resolves #${issueNumber}
+`,
+    },
+    issue: {
+      message: `- [ ] Installer \`Kontinuous\`
+Utiliser la pull request \`[SRE] Kontinuous\` ajoutée à votre repository.
+Pour plus de détails, suivre les instructions d'installation présentes sur la page du plugin:
+Documentation: https://socialgouv.github.io/kontinuous/#/
+`,
+    },
+  },
+  {
     file: ".eslintrc.json",
     issue: {
       message: `- [ ] Installer le packge \`EsLint\`

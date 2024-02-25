@@ -1,0 +1,12 @@
+.env*
+node_modules
+.vscode
+Dockerfile
+.git
+.dockerignore
+.gitignore
+docker-compose.yml
+.prettierrc
+.eslintrc.json
+.github
+.kontinuous

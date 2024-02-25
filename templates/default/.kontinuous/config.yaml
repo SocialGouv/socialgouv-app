@@ -1,0 +1,6 @@
+projectName: <YOUR_PROJECT_NAME_HERE>
+
+dependencies:
+  fabrique:
+    extends:
+      - name: ovh
