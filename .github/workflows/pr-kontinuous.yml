@@ -29,6 +29,39 @@ jobs:
         run: |
           npx degit socialgouv/socialgouv-app/templates/default/.kontinuous .kontinuous
 
+      - name: Create workflows directory
+        run: mkdir -p .github/workflows
+
+      - name: Add deactivate workflow
+        if: ${{ hashFiles('.github/workflows/deactivate.yaml') == '' }}
+        run: |
+          npx degit socialgouv/socialgouv-app/templates/default/.github/workflows/deactivate.yaml .github/workflows/deactivate.yaml
+
+      - name: Add preproduction workflow
+        if: ${{ hashFiles('.github/workflows/preproduction.yaml') == '' }}
+        run: |
+          npx degit socialgouv/socialgouv-app/templates/default/.github/workflows/preproduction.yaml .github/workflows/preproduction.yaml
+
+      - name: Add production workflow
+        if: ${{ hashFiles('.github/workflows/production.yaml') == '' }}
+        run: |
+          npx degit socialgouv/socialgouv-app/templates/default/.github/workflows/production.yaml .github/workflows/production.yaml
+
+      - name: Add release workflow
+        if: ${{ hashFiles('.github/workflows/release.yaml') == '' }}
+        run: |
+          npx degit socialgouv/socialgouv-app/templates/default/.github/workflows/release.yaml .github/workflows/release.yaml
+
+      - name: Add review-auto workflow
+        if: ${{ hashFiles('.github/workflows/review-auto.yaml') == '' }}
+        run: |
+          npx degit socialgouv/socialgouv-app/templates/default/.github/workflows/review-auto.yaml .github/workflows/review-auto.yaml
+
+      - name: Add review workflow
+        if: ${{ hashFiles('.github/workflows/review.yaml') == '' }}
+        run: |
+          npx degit socialgouv/socialgouv-app/templates/default/.github/workflows/review.yaml .github/workflows/review.yaml
+
       - name: Generate Github App token
         uses: tibdex/github-app-token@v1
         id: generate-token
