@@ -29,21 +29,19 @@ jobs:
         run: |
           npx degit socialgouv/socialgouv-app/templates/default/.kontinuous .kontinuous
 
-      - run: ls -lah
+      - name: Generate Github App token
+        uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
-      # - name: Generate Github App token
-      #   uses: tibdex/github-app-token@v1
-      #   id: generate-token
-      #   with:
-      #     app_id: ${{ secrets.APP_ID }}
-      #     private_key: ${{ secrets.APP_PRIVATE_KEY }}
-
-      # - name: Create pull request
-      #   uses: peter-evans/create-pull-request@v6
-      #   with:
-      #     body: ${{github.event.client_payload.body}}
-      #     title: ${{github.event.client_payload.title}}
-      #     labels: ${{github.event.client_payload.labels}}
-      #     branch: ${{github.event.client_payload.branch}}
-      #     token: ${{ steps.generate-token.outputs.token }}
-      #     commit-message: ${{github.event.client_payload.commitMessage}}
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          body: ${{github.event.client_payload.body}}
+          title: ${{github.event.client_payload.title}}
+          labels: ${{github.event.client_payload.labels}}
+          branch: ${{github.event.client_payload.branch}}
+          token: ${{ steps.generate-token.outputs.token }}
+          commit-message: ${{github.event.client_payload.commitMessage}}
