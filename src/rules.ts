@@ -94,10 +94,10 @@ This pull request resolves #${issueNumber}
 `,
     },
     issue: {
-      message: `- [ ] Installer \`Kontinuous\`
-Utiliser la pull request \`[SRE] Kontinuous\` ajoutée à votre repository.
+      message: `- [ ] Ajouter un fichier \`CODEOWNERS\`
+Utiliser la pull request \`[SRE] Code Owners\` ajoutée à votre repository.
 Pour plus de détails, suivre les instructions d'installation présentes sur la page du plugin:
-Documentation: https://socialgouv.github.io/kontinuous/#/
+Documentation: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 `,
     },
   },
@@ -118,14 +118,6 @@ Installation:
     issue: {
       message: `- [ ] Ajouter un fichier \`.dockerignore\`
 Lister l'ensemble des fichiers à exclure du build Docker de l'application.
-`,
-    },
-  },
-  {
-    file: ".gitignore",
-    issue: {
-      message: `- [ ] Ajouter un fichier \`.gitignore\`
-Lister l'ensemble des fichiers à exclure du dêpot de fichiers Git.
 `,
     },
   },
