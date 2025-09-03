@@ -4,6 +4,7 @@ import { createNodeMiddleware } from "@octokit/webhooks"
 
 import handleRepositoryPush from "./handlers/handle-repository-push"
 import { __APP_ID__, __PRIVATE_KEY__, __WEBHOOK_SECRET__ } from "./env"
+// import handleRepositoryCreation from "./handlers/handle-repository-creation"
 // import handleRepositoryPullRequest from "./handlers/handle-repository-pull-request"
 
 const app = new App({
@@ -15,6 +16,7 @@ const app = new App({
 })
 
 app.webhooks.on("push", handleRepositoryPush)
+// app.webhooks.on("repository.created", handleRepositoryCreation)
 // app.webhooks.on("pull_request", handleRepositoryPullRequest)
 
 const middleware = createNodeMiddleware(app.webhooks, { path: "/" })
